@@ -40,23 +40,6 @@
           This is a 'supporting element' so you don't have to install this yourself.
         </blockquote>
           <p>By itself it has nothing to do with Gun...but it is used in other <gun-ui></gun-ui>-elements</p>
-    <paper-drawer-panel>
-      <paper-header-panel drawer>
-        <paper-toolbar>Menu</paper-toolbar>
-        <template is="dom-bind" id="menu-templ">
-          <paper-menu selected="{{_selectedAnchor}}" attr-for-selected="data-anchor" on-iron-select="_goAnchor">
-            <paper-item data-anchor="start">What is it</paper-item>
-            <hr>
-            <paper-item data-anchor="general"><gun-ui></gun-ui></paper-item>
-            <paper-item data-anchor="license">License and stuff</paper-item>
-            <paper-item><a href="https://stefdv.github.io/gun-ui-mixin/components/gun-ui-mixin/">gun-ui-mixin</a></paper-item>
-        </paper-menu>
-      </template>
-      <div class="author">
-       <a href="https://github.com/Stefdv" target="_blank">Stefdv</a> || 2017
-      </div>
-    </paper-header-panel>
-
 
           <demo-box class="black">
             <template>
