@@ -13,7 +13,8 @@ colors available: red, orange, yellow, green, blue and null
 			}
 
 .led {
-    width: 10px;height: 10px;
+    width: var(--led-size,10px);
+    height: var(--led-size,10px);
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.25);
     box-shadow: #000 0 -1px 6px 1px;
@@ -220,32 +221,19 @@ colors available: red, orange, yellow, green, blue and null
          * white,red, orange, yellow, green blue
          * @type {String} 
          */
-				color: {type: String,value:'white'},
-        /**
-         * whether the led is 'on' or 'off'
-         * @type {Boolean}
-         */
-        active: {type: Boolean, value: false, observer:'_activeChanged' },
+				color: {type: String,value:'white',observer:'_colorChanged'},
+
         /**
          * blinks the led infinite with 1s interval
          * @type {Boolean}
          */
         blink:{type:Boolean,value:false,observer:'_changeBlink'}
 			},
-      on: function() {  
-        this.$.led.classList.add(this.color)
-      },
-      off: function() {
-        this.$.led.classList.remove(this.color)
-      },
-      /**
-       * toggle the led 'on/off'
-       */
-      toggle: function() {
-         this.$.led.classList.contains(this.color) ? this.off() : this.on()
-      },
-      _activeChanged: function(newState,oldState) {
-        newState ? this.on() : this.off()
+      _colorChanged(n,o){
+        if(n){
+          this.$.led.classList.remove(o);
+          this.$.led.classList.add(n)
+        }
       },
       _changeBlink(n,o){
         this.blink ? this.$.led.classList.add('blink') : this.$.led.classList.remove('blink') 
